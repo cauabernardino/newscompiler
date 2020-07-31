@@ -26,6 +26,9 @@ And install [Chromedriver](https://github.com/SeleniumHQ/selenium/wiki/ChromeDri
 
 ## Usage
 
-`python newscompiler.py SEARCH_TERM`
+Use
 
-The output will be a PDF file with the titles and links to the news.
+* For Windows: `python newscompiler.py SEARCH_TERM`
+* For Debian based Linux distros: `python3 newscompiler.py SEARCH_TERM` 
+
+on your terminal, where `SEARCH_TERM` is the subject you want to know about, and the output will be a PDF file with news and their links in [TinyURL](https://tinyurl.com/) format.
