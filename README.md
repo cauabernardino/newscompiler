@@ -16,9 +16,9 @@ First, clone this repo with:
 
 `git clone https://github.com/cauabernardino/newscompiler`
 
-Then install the requirements with:
-
-`pip install requirements.txt`
+Then install the requirements:
+- For Windows: `pip install -r requirements.txt`
+- For Debian based Linux distros: `pip3 install -r requirements.txt`
 
 And install [Chromedriver](https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver) following their instructions.
 
