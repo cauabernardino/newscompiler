@@ -31,4 +31,12 @@ Use
 * For Windows: `python newscompiler.py SEARCH_TERM`
 * For Debian based Linux distros: `python3 newscompiler.py SEARCH_TERM` 
 
-on your terminal, where `SEARCH_TERM` is the subject you want to know about, and the output will be a PDF file with news and their links in [TinyURL](https://tinyurl.com/) format.
+on your terminal, where `SEARCH_TERM` is the subject you want to know about. 
+
+If you want to use a subject with more than one word, it can be done using quotes as the example below:
+
+`python newscompiler.py 'star wars'`
+
+
+
+The output will be a PDF file with news and their links in [TinyURL](https://tinyurl.com/) format.
