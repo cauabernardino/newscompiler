@@ -33,11 +33,9 @@ def main():
     
         
         news = []
-        count = 0
 
         for page in pages:
             news.append((page.text, s.tinyurl.short(page.get_attribute('href'))))
-            count += 1
 
         pdf_gen(argv[1], news)
             
