@@ -2,7 +2,6 @@ from fpdf import fpdf, FPDF
 from datetime import date, datetime
 import os
 
-
 fpdf.set_global("SYSTEM_TTFONTS", os.path.join(os.path.dirname(__file__),'fonts'))
 
 
@@ -11,7 +10,7 @@ def pdf_gen(search_term, lines):
     today = str(date.today())
     today_edit = date.today().strftime('%d/%B/%Y')
 
-    term = search_term.capitalize()
+    term = search_term.upper()
 
     filename = " ".join((today, term))
     
@@ -37,6 +36,5 @@ def pdf_gen(search_term, lines):
         pdf.multi_cell(0, 10, line, 1, 1)
         count += 1
 
+    # Output
     pdf.output(".".join((filename,"pdf")), 'F')
-
-
