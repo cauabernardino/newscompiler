@@ -2,7 +2,8 @@
 
 Compilation of news from a chosen subject for the last 24 hours.
 
-*A project made with the purpose of studying automation with Python.*
+
+*A project made with the purpose of studying automation, web scraping and file manipulation with Python.*
 
 
 ###  Remarks for current version:

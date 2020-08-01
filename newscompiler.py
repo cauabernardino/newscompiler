@@ -31,7 +31,6 @@ def main():
         )
         pages = column.find_elements_by_class_name("DY5T1d")
     
-        
         news = []
 
         for page in pages:
@@ -45,4 +44,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
