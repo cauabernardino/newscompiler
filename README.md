@@ -5,13 +5,15 @@ Compilation of news from a chosen subject for the last 24 hours.
 
 *A project made with the purpose of studying automation, web scraping and file manipulation with Python.*
 
+Project under [MIT License](https://github.com/cauabernardino/newscompiler/blob/master/LICENSE).
 
-###  Remarks for current version:
+
+## ☑️ Remarks for current version:
 
 1) Runs only on Chrome (v84.0.4) for now;
-2) Search is regionalized by your current geographic location/language setup.
+2) Command line option for choosing language.
 
-## Setup
+## ⚙️ Setup
 
 First, clone this repo with:
 
@@ -24,20 +26,36 @@ Then install the requirements:
 And install [Chromedriver](https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver) following their instructions.
 
 
-
-## Usage
+## 💻 Usage
 
 Use
 
-* For Windows: `python newscompiler.py SEARCH_TERM`
-* For Debian based Linux distros: `python3 newscompiler.py SEARCH_TERM` 
+* For Windows: `python newscompiler.py [language] 'SEARCH_TERM'`
+* For Debian based Linux distros: `python3 newscompiler.py [language] 'SEARCH_TERM'` 
 
 on your terminal, where `SEARCH_TERM` is the subject you want to know about. 
 
-If you want to use a subject with more than one word, it can be done using quotes as the example below:
+The language options are:
 
-`python newscompiler.py 'star wars'`
+`[-e | --english] [-p | --portuguese] [-s | --spanish] [-f | --french]`
+
+If there is no option, english will be the default value.
+
+
+Example, if you want to use a subject with more than one word in french, it can be done by:
+
+`python newscompiler.py -f 'star wars'` OR `python newscompiler.py --french 'star wars'` 
 
 
 
 The output will be a PDF file with news and their links in [TinyURL](https://tinyurl.com/) format.
+
+
+## 📋 Updates
+
+### 11/Aug/2020
+- Added new command-line option for choosing the language of the search;
+- Browser window will run minimized.
+
+### 31/Jul/2020
+- First version release.

@@ -1,5 +1,5 @@
 .vscode
-~.log
+*.log
 .gitignore
 __pycache__
 fonts/*.pkl
