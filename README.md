@@ -10,7 +10,7 @@ Project under [MIT License](https://github.com/cauabernardino/newscompiler/blob/
 
 ## ☑️ Remarks for current version:
 
-1) Runs only on Chrome (v84.0.4) for now;
+1) Tested on Chrome v84 and v86 and working. Make sure to match the Chomedriver version to your current Chrome version.
 2) Command line option for choosing language.
 
 ## ⚙️ Setup
@@ -52,6 +52,9 @@ The output will be a PDF file with news and their links in [TinyURL](https://tin
 
 
 ## 📋 Updates
+
+### 22/Oct/2020
+- Testing with Chrome v86+, after updating Chromedriver, and working.
 
 ### 11/Aug/2020
 - Added new command-line option for choosing the language of the search;

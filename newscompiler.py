@@ -41,7 +41,7 @@ def main():
     # Defining driver    
     options = webdriver.ChromeOptions()
     options.add_argument(f'--lang={lang}')
-    driver = webdriver.Chrome(chrome_options=options)
+    driver = webdriver.Chrome(options=options)
     driver.minimize_window()
     
     # Web scraping
