@@ -53,6 +53,8 @@ The output will be a PDF file with news and their links in [TinyURL](https://tin
 
 ## 📋 Updates
 
+### 17/03/2021
+- Testing with Chrome v89, need update Chromedriver to match the same version. Working.
 ### 22/Oct/2020
 - Testing with Chrome v86+, after updating Chromedriver, and working.
 
