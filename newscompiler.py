@@ -1,12 +1,10 @@
-import pyshorteners
+import requests
 import getopt
+import pyshorteners
+from time import time
 from pdf_gen import pdf_gen
 from sys import argv, exit
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from lxml import html
 
 argv = argv[1:]
 
@@ -36,56 +34,48 @@ def main():
         exit(2)
 
     # Defining language
-    lang = 'en' #lang default
+    lang = 'en-US' #lang default
     
     for opt, arg in opts:
         if opt in ['-e', '--english']:
-            lang = 'en'
+            lang = 'en-US'
         elif opt in ['-p', '--portuguese']:
-            lang = 'pt'
+            lang = 'pt-BR'
         elif opt in ['-s', '--spanish']:
-            lang = 'es'
+            lang = 'es-419'
         elif opt in ['-f', '--french']:
             lang = 'fr'
 
-    # Defining driver    
-    options = webdriver.ChromeOptions()
-    options.add_argument(f'--lang={lang}')
-    driver = webdriver.Chrome(options=options)
-    driver.minimize_window()
-    
-    # Web scraping
-    driver.get('https://news.google.com/')
-    searchBox = driver.find_element_by_xpath(
-        '//*[@id="gb"]/div[2]/div[2]/div/form/div[1]/div/div/div/div/div[1]/input[2]'
-        )
-    searchBox.send_keys(f"{args[0]} when:1d")
-    searchBox.send_keys(Keys.RETURN)
+    # Scraping
+    root = "https://news.google.com"
+    search_term = args[0]
+    search_url = f"{root}/search?q='{search_term} when:1d'&hl={lang}"
 
+    print(f"Searching for news about {search_term.upper()}")
+    source = requests.get(search_url)
+
+    source_html = html.fromstring(source.text)
+    elements = source_html.find_class("DY5T1d RZIKme")
+
+    # Format and generate PDF
     s = pyshorteners.Shortener()
-    
-    try:
-        column = WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((
-                By.XPATH, 
-                '//*[@id="yDmH0d"]/c-wiz[2]/div/div[2]/div[2]/div/main/c-wiz/div[1]'
-                ))
-        )
-        pages = column.find_elements_by_class_name("DY5T1d")
-    
-        news = []
+    news = []
 
-        for page in pages:
-            news.append((
-                page.text, 
-                s.tinyurl.short(page.get_attribute('href'))
-                ))
+    print("Generating PDF...")
 
-        pdf_gen(args[0], news)
-            
-    finally:
-        driver.quit()
+    for element in elements:
+        url = f"{root}/{element.attrib['href']}"
+        news.append((
+            element.text_content(),
+            s.tinyurl.short(url)
+        ))
+
+    pdf_gen(search_term, news)
 
 
 if __name__ == "__main__":
+    start = time()
     main()
+    end = time()
+
+    print(f"Done in {round(end - start, 2)} seconds! :)")
