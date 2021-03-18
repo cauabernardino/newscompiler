@@ -50,12 +50,12 @@ def main():
     root = "https://news.google.com"
     search_term = args[0]
     search_url = f"{root}/search?q='{search_term} when:1d'&hl={lang}"
+
     print(f"Searching for news about {search_term.upper()}")
     source = requests.get(search_url)
 
-    tree = html.fromstring(source.text)
-    elements = tree.find_class("DY5T1d RZIKme")
-
+    source_html = html.fromstring(source.text)
+    elements = source_html.find_class("DY5T1d RZIKme")
 
     # Format and generate PDF
     s = pyshorteners.Shortener()
@@ -71,6 +71,7 @@ def main():
         ))
 
     pdf_gen(search_term, news)
+
 
 if __name__ == "__main__":
     start = time()
