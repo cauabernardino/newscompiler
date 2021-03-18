@@ -10,8 +10,8 @@ Project under [MIT License](https://github.com/cauabernardino/newscompiler/blob/
 
 ## ☑️ Remarks for current version:
 
-1) Tested on Chrome v84 and v86 and working. Make sure to match the Chomedriver version to your current Chrome version.
-2) Command line option for choosing language.
+1) Command line option for choosing language.
+2) Theres is no more need for Chromedriver.
 
 ## ⚙️ Setup
 
@@ -22,8 +22,6 @@ First, clone this repo with:
 Then install the requirements:
 - For Windows: `pip install -r requirements.txt`
 - For Debian based Linux distros: `pip3 install -r requirements.txt`
-
-And install [Chromedriver](https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver) following their instructions.
 
 
 ## 💻 Usage
@@ -47,14 +45,15 @@ Example, if you want to use a subject with more than one word in french, it can 
 `python newscompiler.py -f 'star wars'` OR `python newscompiler.py --french 'star wars'` 
 
 
-
 The output will be a PDF file with news and their links in [TinyURL](https://tinyurl.com/) format.
 
 
 ## 📋 Updates
 
 ### 17/03/2021
-- Testing with Chrome v89, need update Chromedriver to match the same version. Working.
+- Total refactor for performance and generalization improvements!
+    - Now the script uses `requests` and `lxml.html` for scraping;
+    - No more need for Selenium and Chromedriver.
 ### 22/Oct/2020
 - Testing with Chrome v86+, after updating Chromedriver, and working.
 
