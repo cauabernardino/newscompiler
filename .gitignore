@@ -1,9 +1,8 @@
 .vscode
 *.log
-.gitignore
 __pycache__
 fonts/*.pkl
 *.pdf
 env/
 .vim
-
+playground.py
