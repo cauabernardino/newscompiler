@@ -5,13 +5,13 @@ Compilation of news from a chosen subject for the last 24 hours.
 
 *A project made with the purpose of studying automation, web scraping and file manipulation with Python.*
 
-Project under [MIT License](https://github.com/cauabernardino/newscompiler/blob/master/LICENSE).
 
+## ☑️ Remarks for current version (Development):
 
-## ☑️ Remarks for current version:
-
-1) Command line option for choosing language.
-2) Theres is no more need for Chromedriver.
+1) Refactor of code to detach functionalities
+2) Package configuration
+3) Test addition
+4) Date span choosing
 
 ## ⚙️ Setup
 
