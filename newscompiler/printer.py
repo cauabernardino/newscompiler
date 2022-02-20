@@ -1,6 +1,7 @@
-from fpdf import fpdf, FPDF
-from datetime import date
 import os
+from fpdf import fpdf, FPDF
+
+from newscompiler.tools import get_date
 
 
 fpdf.set_global("SYSTEM_TTFONTS",
@@ -8,11 +9,8 @@ fpdf.set_global("SYSTEM_TTFONTS",
 
 
 def pdf_gen(search_term, lines):
-    # Date and term concatenation
-    today = str(date.today())
-    today_edit = date.today().strftime('%d/%B/%Y')
     term = search_term.upper()
-    filename = " ".join((today, term))
+    filename = " ".join((get_date(), term))
 
     # File creation
     pdf = FPDF(unit='mm', format='A4')
@@ -27,7 +25,8 @@ def pdf_gen(search_term, lines):
     # Page creation
     pdf.add_page()
     pdf.set_font("Open Sans", 'B', size=12)
-    pdf.cell(200, 10, txt=f"News for {term} on {today_edit}", ln=1, align="C")
+    pdf.cell(
+        200, 10, txt=f"News for {term} on {get_date(format=True)}", ln=1, align="C")
 
     # News addition
     count = 1

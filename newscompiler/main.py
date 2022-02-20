@@ -1,32 +1,34 @@
 import requests
 import getopt
 import pyshorteners
+
 from time import time
-from pdf_gen import pdf_gen
 from sys import argv, exit
 from lxml import html
 
-argv = argv[1:]
+from newscompiler.printer import pdf_gen
+
 
 def main():
+    argv = argv[1:]
 
     # Check if parameters are alright
     try:
         opts, args = getopt.getopt(
-            argv, 
-            'epsf', 
+            argv,
+            'epsf',
             [
-                'english', 
-                'portuguese', 
-                'spanish', 
+                'english',
+                'portuguese',
+                'spanish',
                 'french'
             ]
         )
-        
+
         if len(args) != 1 or len(opts) > 1:
             print("Usage: python newscompiler.py [language] 'SEARCH_TERM'")
-            print("Choose one language: [-e | --english]" 
-                "[-p | --portuguese] [-s | --spanish] [-f | --french]")
+            print("Choose one language: [-e | --english]"
+                  "[-p | --portuguese] [-s | --spanish] [-f | --french]")
             exit(1)
 
     except getopt.GetoptError:
@@ -34,8 +36,8 @@ def main():
         exit(2)
 
     # Defining language
-    lang = 'en-US' #lang default
-    
+    lang = 'en-US'  # lang default
+
     for opt, arg in opts:
         if opt in ['-e', '--english']:
             lang = 'en-US'
