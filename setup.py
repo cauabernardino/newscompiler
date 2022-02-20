@@ -7,6 +7,8 @@ with open("README.md") as f:
 with open("LICENSE") as f:
     license = f.read()
 
+REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()]
+
 setup(
     name="newscompiler",
     version="0.2.0",
@@ -14,7 +16,8 @@ setup(
     long_description=readme,
     author="Cauã Bernardino",
     author_email="",
-    url="https://github.com/cauabernardino/cabinet",
+    url="https://github.com/cauabernardino/newscompiler",
+    install_requires=REQUIREMENTS,
     license=license,
     packages=find_packages(exclude=("tests")),
     entry_points={

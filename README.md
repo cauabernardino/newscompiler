@@ -3,53 +3,35 @@
 Compilation of news from a chosen subject for the last 24 hours.
 
 
-*A project made with the purpose of studying automation, web scraping and file manipulation with Python.*
+*A project made with the purpose of studying automation, scraping and file manipulation with Python.*
 
+## ⚙️ Setup and usage
 
-## ☑️ Remarks for current version (Development):
+- First, clone this repo with: `git clone https://github.com/cauabernardino/newscompiler`
+- Enter the directory and install the package:
+    ```bash
+    $ cd newscompiler
+    $ pip install .
+    ```
+- Usage:
+    ```bash
+    # With default values to language (english) and time interval (1d)
+    $ news "star wars"
+    $ news -l en -t 1d "star wars"
 
-1) Refactor of code to detach functionalities
-2) Package configuration
-3) Test addition
-4) Date span choosing
-
-## ⚙️ Setup
-
-First, clone this repo with:
-
-`git clone https://github.com/cauabernardino/newscompiler`
-
-Then install the requirements:
-- For Windows: `pip install -r requirements.txt`
-- For Debian based Linux distros: `pip3 install -r requirements.txt`
-
-
-## 💻 Usage
-
-Use
-
-* For Windows: `python newscompiler.py [language] 'SEARCH_TERM'`
-* For Debian based Linux distros: `python3 newscompiler.py [language] 'SEARCH_TERM'` 
-
-on your terminal, where `SEARCH_TERM` is the subject you want to know about. 
-
-The language options are:
-
-`[-e | --english] [-p | --portuguese] [-s | --spanish] [-f | --french]`
-
-If there is no option, english will be the default value.
-
-
-Example, if you want to use a subject with more than one word in french, it can be done by:
-
-`python newscompiler.py -f 'star wars'` OR `python newscompiler.py --french 'star wars'` 
-
-
-The output will be a PDF file with news and their links in [TinyURL](https://tinyurl.com/) format.
+    # With  different values
+    $ news -l pt -t 7d "star wars"
+    ```
+    - Use `news -h` or `news --help` for all options
+- The output will be a PDF file with news and their links in [TinyURL](https://tinyurl.com/) format.
 
 
 ## 📋 Updates
 
+### 19/02/2022
+- Refactor of code to detach functionalities
+- Python package configuration
+- Time interval choosing
 ### 17/03/2021
 - Total refactor for performance and generalization improvements!
     - Now the script uses `requests` and `lxml.html` for scraping;
