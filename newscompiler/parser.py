@@ -19,7 +19,7 @@ def arg_parser() -> ArgumentParser:
         "-l",
         "--lang",
         help="choose search language",
-        default="english",
+        default="en",
         choices=SUPPORTED_LANGUAGES.keys()
     )
     parser.add_argument(
