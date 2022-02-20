@@ -8,7 +8,7 @@ fpdf.set_global("SYSTEM_TTFONTS",
                 os.path.join(os.getcwd(), 'fonts'))
 
 
-def pdf_gen(search_term, lines):
+def export_pdf(search_term, lines):
     term = search_term.upper()
     filename = " ".join((get_date(), term))
 
@@ -38,3 +38,7 @@ def pdf_gen(search_term, lines):
 
     # Output
     pdf.output(".".join((filename, "pdf")), 'F')
+
+
+def print_news():
+    pass
