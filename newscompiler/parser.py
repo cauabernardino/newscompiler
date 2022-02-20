@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 
-from newscompiler import SUPPORTED_LANGUAGES
+from newscompiler import SUPPORTED_LANGUAGES, TIME_INTERVALS
 
 
 def arg_parser() -> ArgumentParser:
@@ -11,14 +11,23 @@ def arg_parser() -> ArgumentParser:
     )
 
     parser.add_argument(
-        "term", action="store"
+        "search_input",
+        help="input term to be searched",
+        action="store"
     )
     parser.add_argument(
         "-l",
         "--lang",
         help="choose search language",
         default="english",
-        choices=SUPPORTED_LANGUAGES
+        choices=SUPPORTED_LANGUAGES.keys()
+    )
+    parser.add_argument(
+        "-t",
+        "--time",
+        help="choose time interval for the search",
+        default="1d",
+        choices=TIME_INTERVALS
     )
 
     return parser
