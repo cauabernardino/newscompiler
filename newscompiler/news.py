@@ -14,6 +14,10 @@ def get_news(search_term: str, interval: str, lang: str) -> List:
             Defaults to '1d'.
         lang (str): Language to be used, allowed in SUPPORTED_LANGUAGES.
             Defaults to 'en'.
+
+    Returns:
+        A list of tuples, consisting in the news headline and its URL in 
+        TinyURL format.
     """
     root = "https://news.google.com"
     search_url = f"{root}/search?q={search_term}%20when:{interval}&hl={lang}"
