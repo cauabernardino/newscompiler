@@ -20,6 +20,7 @@ setup(
     install_requires=REQUIREMENTS,
     license=license,
     packages=find_packages(exclude=("tests")),
+    package_data={"newscompiler": ["fonts/*"]},
     entry_points={
         "console_scripts": [
             "news = newscompiler.main:main",
