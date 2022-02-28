@@ -16,7 +16,7 @@ def get_news(search_term: str, interval: str, lang: str) -> List:
             Defaults to 'en'.
 
     Returns:
-        A list of tuples, consisting in the news headline and its URL in 
+        A list of tuples, consisting in the news headline and its URL in
         TinyURL format.
     """
     root = "https://news.google.com"
@@ -26,10 +26,7 @@ def get_news(search_term: str, interval: str, lang: str) -> List:
 
     source = requests.get(
         search_url,
-        cookies={
-            'CONSENT': 'YES+42',
-            "User-Agent": "Mozilla/5.0"
-        },
+        cookies={"CONSENT": "YES+42", "User-Agent": "Mozilla/5.0"},
         allow_redirects=True,
     )
 
@@ -41,9 +38,6 @@ def get_news(search_term: str, interval: str, lang: str) -> List:
 
     for element in elements:
         url = f"{root}/{element.attrib['href']}"
-        news.append((
-            element.text_content(),
-            s.tinyurl.short(url),
-        ))
+        news.append((element.text_content(), s.tinyurl.short(url)))
 
     return news
