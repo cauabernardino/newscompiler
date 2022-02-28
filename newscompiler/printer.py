@@ -1,5 +1,5 @@
 from pathlib import Path
-from fpdf import fpdf, FPDF
+from fpdf import FPDF
 from typing import List
 
 from newscompiler.tools import get_date
@@ -13,7 +13,7 @@ FONT_NAMES = (
 )
 
 
-def export_pdf(search_term: str, lines: List):
+def export_pdf(search_term: str, lines: List) -> FPDF:
     """Handles the creation and exporting of news list into a PDF file.
 
     Args:
@@ -23,8 +23,7 @@ def export_pdf(search_term: str, lines: List):
     Returns:
         A PDF file in the package root directory.
     """
-    term = search_term.upper()
-    filename = " ".join((get_date(), term))
+    filename = " ".join((get_date(), search_term.upper()))
 
     # File creation
     pdf = FPDF(unit="mm", format="A4")
@@ -45,7 +44,7 @@ def export_pdf(search_term: str, lines: List):
     pdf.cell(
         200,
         10,
-        txt=f"News for {term} on {get_date(format=True)}",
+        txt=f"News for {search_term.upper()} on {get_date(format=True)}",
         ln=1,
         align="C",
     )
@@ -53,12 +52,25 @@ def export_pdf(search_term: str, lines: List):
     # News addition
     pdf.set_font("Open Sans", "", size=10)
     for num, (title, link) in enumerate(lines):
-        line = f"{num}) {title}\nLink: {link}"
+        line = f"{num + 1}) {title}\nLink: {link}"
         pdf.multi_cell(0, 10, line, 1, 1)
 
     # Output
-    pdf.output(".".join((filename, "pdf")), "F")
+    return pdf.output(".".join((filename, "pdf")), "F")
 
 
-def print_news():
-    pass
+def print_news(search_term: str, lines: List) -> None:
+    """Prints the news to the console.
+
+    Args:
+        search_term (str): The term that was searched.
+        lines (List[Tuple[str, str]]): List of tuples with
+    """
+    headline = f"News for {search_term.upper()} on {get_date(format=True)}"
+
+    print(headline)
+    for num, (title, link) in enumerate(lines):
+        print("----------------------------------------")
+        line = f"{num + 1}) {title}\n{link}"
+        print(line)
+    print("\n")

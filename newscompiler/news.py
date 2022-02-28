@@ -22,7 +22,7 @@ def get_news(search_term: str, interval: str, lang: str) -> List:
     root = "https://news.google.com"
     search_url = f"{root}/search?q={search_term}%20when:{interval}&hl={lang}"
 
-    print(f"Searching for news about {search_term.upper()}")
+    print(f"Searching for news about {search_term.upper()}...\n")
 
     source = requests.get(
         search_url,

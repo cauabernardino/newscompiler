@@ -2,7 +2,7 @@ from newscompiler import SUPPORTED_LANGUAGES
 
 from newscompiler.news import get_news
 from newscompiler.parser import arg_parser
-from newscompiler.printer import export_pdf
+from newscompiler.printer import export_pdf, print_news
 from newscompiler.tools import TimeContext
 
 
@@ -19,7 +19,11 @@ def main():
         interval = args.time
 
         news = get_news(search_term, interval, lang)
-        export_pdf(search_term, news)
+
+        if args.pdf:
+            export_pdf(search_term, news)
+            return
+        print_news(search_term, news)
 
 
 if __name__ == "__main__":
