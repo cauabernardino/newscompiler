@@ -26,7 +26,9 @@ def export_pdf(search_term, lines):
     pdf.add_page()
     pdf.set_font("Open Sans", 'B', size=12)
     pdf.cell(
-        200, 10, txt=f"News for {term} on {get_date(format=True)}", ln=1, align="C")
+        200, 10, txt=f"News for {term} on {get_date(format=True)}",
+        ln=1, align="C"
+    )
 
     # News addition
     count = 1
