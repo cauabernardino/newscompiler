@@ -21,13 +21,20 @@ Compilation of news from a chosen subject for the last 24 hours.
 
     # With  different values
     $ news -l pt -t 7d "star wars"
+
+    # To export to PDF
+    $ news -l pt -t 1d "star wars" --pdf
     ```
     - Use `news -h` or `news --help` for all options
-- The output will be a PDF file with news and their links in [TinyURL](https://tinyurl.com/) format.
+- The output can be either in console or as a PDF file, with news headlines and their links in [TinyURL](https://tinyurl.com/) format.
 
 
 ## 📋 Updates
 
+### 28/02/2022
+- News printing to the console implemented (now standard)
+- Refactor of PDF exporting function
+- New argument to export to PDF
 ### 19/02/2022
 - Refactor of code to detach functionalities
 - Python package configuration
