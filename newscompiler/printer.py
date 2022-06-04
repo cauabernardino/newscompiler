@@ -1,6 +1,6 @@
 from pathlib import Path
 from fpdf import FPDF
-from typing import List
+from typing import Iterator, List
 
 from newscompiler.tools import get_date
 
@@ -28,7 +28,7 @@ def export_pdf(search_term: str, lines: List) -> FPDF:
     # File creation
     pdf = FPDF(unit="mm", format="A4")
 
-    # Font adition
+    # Font addition
     font_path = Path(__file__).resolve().parent / "fonts"
     for font, style in FONT_NAMES:
         pdf.add_font(
@@ -59,7 +59,7 @@ def export_pdf(search_term: str, lines: List) -> FPDF:
     return pdf.output(".".join((filename, "pdf")), "F")
 
 
-def print_news(search_term: str, lines: List) -> None:
+def print_news(search_term: str, news: Iterator) -> None:
     """Prints the news to the console.
 
     Args:
@@ -67,10 +67,8 @@ def print_news(search_term: str, lines: List) -> None:
         lines (List[Tuple[str, str]]): List of tuples with
     """
     headline = f"News for {search_term.upper()} on {get_date(format=True)}"
-
     print(headline)
-    for num, (title, link) in enumerate(lines):
+
+    for num, (title, link) in enumerate(news):
+        print(f"{num + 1}) {title}\n{link}")
         print("----------------------------------------")
-        line = f"{num + 1}) {title}\n{link}"
-        print(line)
-    print("\n")

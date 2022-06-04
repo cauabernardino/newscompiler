@@ -10,17 +10,16 @@ def main():
     args = parser.parse_args()
 
     with TimeContext() as total_time:
-        # Getting the news
-        lang = SUPPORTED_LANGUAGES[args.lang]
-        search_term = args.search_input
-        interval = args.time
-
-        news = get_news(search_term, interval, lang)
+        news = get_news(
+            search_term=args.search_input,
+            interval=args.time,
+            lang=SUPPORTED_LANGUAGES[args.lang],
+        )
 
         if args.pdf:
-            export_pdf(search_term, news)
-            return
-        print_news(search_term, news)
+            export_pdf(args.search_input, list(news))
+        else:
+            print_news(args.search_input, news)
 
     print(total_time)
 
