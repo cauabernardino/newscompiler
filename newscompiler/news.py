@@ -1,11 +1,13 @@
 import requests
 import pyshorteners
 
-from typing import Generator, List
 from lxml import html
+from typing import Iterator, Tuple
 
 
-def get_news(search_term: str, interval: str, lang: str) -> Generator:
+def get_news(
+    search_term: str, interval: str, lang: str
+) -> Iterator[Tuple[str, str]]:
     """Function to scrape Google News and return the searched news.
 
     Args:
@@ -37,4 +39,4 @@ def get_news(search_term: str, interval: str, lang: str) -> Generator:
 
     for element in elements:
         url = f"{root}/{element.attrib['href']}"
-        yield (element.text_content(), s.tinyurl.short(url))
+        yield str(element.text_content()), s.tinyurl.short(url)
