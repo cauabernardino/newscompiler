@@ -1,8 +1,9 @@
 .vscode
 *.log
 __pycache__
-fonts/*.pkl
+*.pkl
 *.pdf
 env/
 .vim
 playground.py
+*.egg*
