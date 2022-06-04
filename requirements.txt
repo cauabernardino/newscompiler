@@ -1,3 +1,0 @@
-lxml
-fpdf==1.7.2
-pyshorteners==1.0.1

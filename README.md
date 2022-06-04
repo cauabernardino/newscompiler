@@ -1,7 +1,6 @@
 # News Compiler
 
-Compilation of news from a chosen subject for the last 24 hours.
-
+Compilation of news for a given subject.
 
 *A project made with the purpose of studying automation, scraping and file manipulation with Python.*
 
@@ -30,6 +29,9 @@ Compilation of news from a chosen subject for the last 24 hours.
 
 
 ## 📋 Updates
+
+### 04/06/2022
+- Update on package configuration logic
 
 ### 28/02/2022
 - News printing to the console implemented (now standard)
