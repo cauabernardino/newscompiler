@@ -33,10 +33,9 @@ def get_news(
     )
 
     source_html = html.fromstring(source.text)
-    elements = source_html.find_class("DY5T1d RZIKme")
-
+    elements = source_html.find_class("JtKRv")
     s = pyshorteners.Shortener()
 
     for element in elements:
-        url = f"{root}/{element.attrib['href']}"
+        url = f"{root}/{element.getparent().attrib['href']}"
         yield str(element.text_content()), s.tinyurl.short(url)
